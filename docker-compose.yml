@@ -1,0 +1,14 @@
+services:
+  db-produk:
+    image: postgres:18-alpine
+    
+    environment:
+      - POSTGRES_DB=cobadb
+      - POSTGRES_USER=coba
+      - POSTGRES_PASSWORD=test1234
+    
+    ports:
+      - 12345:5432
+    
+    volumes:
+      - ./db-produk:/var/lib/postgresql/18/docker
