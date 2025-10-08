@@ -12,3 +12,16 @@ services:
     
     volumes:
       - ./db-produk:/var/lib/postgresql/18/docker
+  
+  app-produk:
+    image: aplikasi-produk
+
+    environment:
+      - DB_HOST=db-produk
+      - DB_PORT=5432
+      - DB_NAME=cobadb
+      - DB_USER=coba
+      - DB_PASSWORD=test1234
+    
+    ports:
+      - 3003:3000
