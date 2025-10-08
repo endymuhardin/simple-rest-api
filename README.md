@@ -157,6 +157,23 @@ Aplikasi akan menampilkan error jika environment variables berikut tidak di-set:
 ### Sample data tidak muncul
 Pastikan sudah menjalankan `setup.sql` untuk membuat tabel dan mengisi sample data.
 
+## Menjalankan docker image Node.js di current folder ##
+
+Kita bisa menjalankan image Node.js, kemudian mapping local folder ke dalam container, sehingga kita bisa melakukan compile atau run terhadap file-file di local folder tersebut. Berikut perintahnya
+
+```
+docker run -it --rm -p 3003:3003 -v $(pwd):/usr/src/app -w /usr/src/app node:22-alpine sh
+```
+
+Penjelasan:
+
+* `docker run -it --rm` : menjalankan docker container secara interaktif (`-i`), membuka terminal (`-t`), dan menghapus container apabila sudah exit (`--rm`)
+* `-p 3003:3003` : expose port 3003 dalam container ke port 3003 di host
+* `-v $(pwd):/usr/src/app` : mapping folder saat ini (pwd : print working directory) ke folder `/usr/src/app` dalam container
+* `-w /usr/src/app` : set working directory di dalam container ke folder tersebut
+* `node:22-alpine` : nama image yang mau dijalankan menjadi container
+* `sh` : perintah yang dijalankan setelah container berjalan
+
 ## Build Docker Image ##
 
 1. Melakukan build untuk `Dockerfile` yang sudah ada
