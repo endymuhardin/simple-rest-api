@@ -184,7 +184,25 @@ Penjelasan:
 
     **Jangan lupa titik di akhir command, itu maksudnya untuk menyatakan bahwa build context adalah folder ini (dinyatakan dengan . )**
 
-2. Menjalankan docker image
+2. Memberikan tag untuk docker image
+
+    ```
+    docker tag aplikasi-produk endymuhardin/aplikasi-produk:2025100801  
+    ```
+
+3. Push image ke docker hub
+
+    ```
+    docker push endymuhardin/aplikasi-produk:2025100801
+    ```
+
+4. Build untuk multiple platform, kemudian langsung push
+
+    ```
+    docker buildx build --platform linux/amd64,linux/arm64 --push -t endymuhardin/aplikasi-produk:2025100801 .
+    ```
+
+5. Menjalankan docker image
 
     ```
     docker run -p 3003:3000 -e DB_HOST=10.99.18.100 -e DB_PORT=12345 -e DB_NAME=cobadb -e DB_USER=coba -e DB_PASSWORD=test1234  aplikasi-produk
