@@ -6,4 +6,4 @@ COPY ./package.json ./
 
 RUN ["npm", "install"]
 
-ENTRYPOINT ["node", "/usr/src/app/app.js"]
+CMD ["npm", "start"]
