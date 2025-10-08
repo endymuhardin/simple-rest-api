@@ -156,3 +156,21 @@ Aplikasi akan menampilkan error jika environment variables berikut tidak di-set:
 
 ### Sample data tidak muncul
 Pastikan sudah menjalankan `setup.sql` untuk membuat tabel dan mengisi sample data.
+
+## Build Docker Image ##
+
+1. Melakukan build untuk `Dockerfile` yang sudah ada
+
+    ```
+    docker build -t nama-image .
+    ```
+
+    **Jangan lupa titik di akhir command, itu maksudnya untuk menyatakan bahwa build context adalah folder ini (dinyatakan dengan . )**
+
+2. Menjalankan docker image
+
+    ```
+    docker run -p 3003:3000 -e DB_HOST=10.99.18.100 -e DB_PORT=12345 -e DB_NAME=cobadb -e DB_USER=coba -e DB_PASSWORD=test1234  aplikasi-produk
+    ```
+
+    Karena kita tidak memasukkan file `.env` ke dalam docker image, maka kita harus menyebutkan value yang dibutuhkan sebagai environment variable
